@@ -1,0 +1,72 @@
+<div class="slds-card slds-grid slds-wrap slds-grid--align-center"> 
+    <div class="slds-col slds-size_6-of-12 slds-text-align--center slds-large-size_8-of-12">
+      <h2 class="">Currency Converter</h2>
+        <form [formGroup]="currencyForm">
+          <p class="slds-text-align--left slds-text-heading--regular">Type in amount and select currency:</p>
+          <div class="slds-grid">
+              <div class="slds-col slds-size_7-of-12 slds-m-right_medium">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                      <input  class="slds-input" type="text" placeholder="0.00" 
+                      formControlName="amount" (change)="inputChanged()"/> 
+                    </div>
+                  </div>
+              </div>
+              <div class="slds-col slds-size_4-of-12">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                      <div class="slds-select_container">
+                        <select class="slds-select" formControlName="fromRate" (change)="inputChanged()"> 
+                          <option [ngValue]="item" *ngFor="let item of rates"> 
+                            {{item.code}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <p class="slds-text-align--left slds-text-heading--regular">Converted Amount:</p>
+            <div class="slds-grid">
+              <div class="slds-col slds-size_7-of-12 slds-m-right_medium">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                      <input  class="slds-input" type="text" placeholder="0.00" formControlName="result" readonly/>
+                    </div>
+                  </div>
+              </div>
+              <div class="slds-col slds-size_4-of-12">   
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                      <div class="slds-select_container">
+                        <select  class="slds-select" formControlName="toRate" (change)="inputChanged()">
+                          <option [ngValue]="item" *ngFor="let item of rates"
+                          [selected]="item.code == 'USD'"> 
+                            {{item.code}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>       
+      </form>
+    </div>
+    
+   
+    <div class="slds-col slds-size_1-of-1 slds-text-align--right ">
+      <a routerLink="/disclaimer" class="slds-text-link slds-text-align--right">Disclaimer</a>
+    </div>
+
+    <div *ngIf="errorMessage$ | async as errorMessage" class="error-block slds-var-p-around_small">
+      Error: {{ errorMessage }} 
+    </div>
+</div>
+
+<div class="slds-card slds-grid slds-wrap slds-grid--align-center" *ngIf="(history$ | async)?.length"> 
+  <div class="slds-col slds-size_9-of-12 slds-text-align--center ">
+    <history [list]="history$ | async"></history> 
+  </div>
+</div>
+
+

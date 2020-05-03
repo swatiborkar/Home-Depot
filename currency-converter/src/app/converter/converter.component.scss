@@ -1,0 +1,20 @@
+input.ng-touched.ng-invalid, input.ng-dirty.ng-invalid {
+    border: 1px solid red;
+}
+.slds-card{
+    padding:30px;
+}
+input[readonly]{
+    border: 1px solid #ccc;
+    background-color: #eee;
+    box-shadow: none;
+    padding: 0 1rem 0 .75rem;
+}
+.slds-text-link{
+    text-decoration: underline;
+}
+.error-block{
+    background-color: red;
+    color:white;
+    
+}

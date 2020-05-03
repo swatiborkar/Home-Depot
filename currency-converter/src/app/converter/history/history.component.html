@@ -1,0 +1,40 @@
+<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th scope="col">
+                    <div class="slds-truncate" title="No">No</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="From">From</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="To">To</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Date">Date</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Time">Time</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="slds-hint-parent" *ngFor="let item of list;let i = index">
+                <td>
+                    <div class="slds-truncate" title="Cloudhub">{{i+1}}</div>
+                </td>  
+                <td>
+                    <div class="slds-truncate" title="Cloudhub">{{item.from}} : {{item.amount}}</div>
+                </td> 
+                <td>
+                    <div class="slds-truncate" title="Cloudhub">{{item.to}} : {{item.result}}</div>
+                </td>  
+                <td>
+                    <div class="slds-truncate" title="Cloudhub">{{item.date}}</div>
+                </td>   
+                <td>
+                    <div class="slds-truncate" title="Cloudhub">{{item.time}}</div>
+                </td>     
+            </tr>
+        </tbody>
+    </table>
